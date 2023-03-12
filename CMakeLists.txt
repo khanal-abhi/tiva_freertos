@@ -3,14 +3,20 @@ set(CMAKE_TOOLCHAIN_FILE toolchain.cmake)
 
 include(FetchContent)
 
-# Pull env vars into cmake vars
 set(TIVA_SDK_PATH $ENV{TIVA_SDK_PATH})
+
+if(NOT DEFINED ENV{TIVA_SDK_PATH})
+    message(FATAL_ERROR "You must set TIVA_SDK_PATH environment variable that points tiva sdk path")
+endif()
+
 set(OPENOCD_CONFIG_PATH $ENV{OPENOCD_CONFIG_PATH})
-set(FREERTOS_KERNEL_PATH $ENV{FREERTOS_KERNEL_PATH})
+
+if(NOT DEFINED ENV{OPENOCD_CONFIG_PATH})
+    message(WARN "You must set OPENOCD_CONFIG_PATH environment variable that points to the path conatining conifg file for your board")
+endif()
 
 project(tiva_freertos LANGUAGES C)
 
-# Project specific cmake vars
 set(OPENOCD_BOARD dk-tm4c129)
 set(LINKERSCRIPT_PATH ${CMAKE_SOURCE_DIR}/${CMAKE_PROJECT_NAME}.ld)
 
@@ -23,7 +29,7 @@ add_executable(
 )
 
 include_directories(
-    ${TIVA_SDK_PATH}
+    ${TIVA_SDK_PATH}/
     include
 )
 
