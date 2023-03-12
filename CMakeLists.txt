@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION "3.20")
 set(CMAKE_TOOLCHAIN_FILE toolchain.cmake)
 
+include(FetchContent)
+
 # Pull env vars into cmake vars
 set(TIVA_SDK_PATH $ENV{TIVA_SDK_PATH})
 set(OPENOCD_CONFIG_PATH $ENV{OPENOCD_CONFIG_PATH})
@@ -15,13 +17,44 @@ set(LINKERSCRIPT_PATH ${CMAKE_SOURCE_DIR}/${CMAKE_PROJECT_NAME}.ld)
 add_executable(
     ${CMAKE_PROJECT_NAME}
     startup_gcc.c
+    board.c
     main.c
+    uart_rtos.c
 )
+
+include_directories(
+    ${TIVA_SDK_PATH}
+    include
+)
+
+FetchContent_Declare( freertos_kernel
+    GIT_REPOSITORY https://github.com/FreeRTOS/FreeRTOS-Kernel.git
+    GIT_TAG        V10.0.0
+)
+
+add_library(freertos_config INTERFACE)
+
+target_include_directories(freertos_config SYSTEM
+INTERFACE
+    include
+)
+
+set( FREERTOS_HEAP "4" CACHE STRING "" FORCE)
+# Select the native compile PORT
+set( FREERTOS_PORT "GCC_POSIX" CACHE STRING "" FORCE)
+# Select the cross-compile PORT
+if (CMAKE_CROSSCOMPILING)
+  set(FREERTOS_PORT "GCC_ARM_M4F" CACHE STRING "" FORCE)
+endif()
+
+FetchContent_MakeAvailable(freertos_kernel)
 
 add_custom_target(
     link_tiva_freertos
     COMMAND ${CMAKE_LINKER} -T ${LINKERSCRIPT_PATH}
         ${CMAKE_BINARY_DIR}/CMakeFiles/tiva_freertos.dir/startup_gcc.c.obj
+        ${CMAKE_BINARY_DIR}/CMakeFiles/tiva_freertos.dir/board.c.obj
+        ${CMAKE_BINARY_DIR}/CMakeFiles/tiva_freertos.dir/uart_rtos.c.obj
         ${CMAKE_BINARY_DIR}/CMakeFiles/tiva_freertos.dir/main.c.obj
         ${TIVA_SDK_PATH}/driverlib/gcc/libdriver.a
         -Map=${CMAKE_PROJECT_NAME}.map
@@ -42,8 +75,4 @@ add_custom_target(
 add_custom_target(
     attach_to_gdb_server
     COMMAND arm-none-eabi-gdb ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.elf
-)
-
-include_directories(
-    ${TIVA_SDK_PATH}
 )

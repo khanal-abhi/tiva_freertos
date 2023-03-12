@@ -181,6 +181,30 @@ attach_to_gdb_server/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/attach_to_gdb_server.dir/build.make CMakeFiles/attach_to_gdb_server.dir/build
 .PHONY : attach_to_gdb_server/fast
 
+board.obj: board.c.obj
+.PHONY : board.obj
+
+# target to build an object file
+board.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/board.c.obj
+.PHONY : board.c.obj
+
+board.i: board.c.i
+.PHONY : board.i
+
+# target to preprocess a source file
+board.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/board.c.i
+.PHONY : board.c.i
+
+board.s: board.c.s
+.PHONY : board.s
+
+# target to generate assembly for a file
+board.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/board.c.s
+.PHONY : board.c.s
+
 main.obj: main.c.obj
 .PHONY : main.obj
 
@@ -229,6 +253,30 @@ startup_gcc.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/startup_gcc.c.s
 .PHONY : startup_gcc.c.s
 
+uart_rtos.obj: uart_rtos.c.obj
+.PHONY : uart_rtos.obj
+
+# target to build an object file
+uart_rtos.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/uart_rtos.c.obj
+.PHONY : uart_rtos.c.obj
+
+uart_rtos.i: uart_rtos.c.i
+.PHONY : uart_rtos.i
+
+# target to preprocess a source file
+uart_rtos.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/uart_rtos.c.i
+.PHONY : uart_rtos.c.i
+
+uart_rtos.s: uart_rtos.c.s
+.PHONY : uart_rtos.s
+
+# target to generate assembly for a file
+uart_rtos.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/uart_rtos.c.s
+.PHONY : uart_rtos.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -242,12 +290,18 @@ help:
 	@echo "... link_tiva_freertos"
 	@echo "... start_gdb_server"
 	@echo "... tiva_freertos"
+	@echo "... board.obj"
+	@echo "... board.i"
+	@echo "... board.s"
 	@echo "... main.obj"
 	@echo "... main.i"
 	@echo "... main.s"
 	@echo "... startup_gcc.obj"
 	@echo "... startup_gcc.i"
 	@echo "... startup_gcc.s"
+	@echo "... uart_rtos.obj"
+	@echo "... uart_rtos.i"
+	@echo "... uart_rtos.s"
 .PHONY : help
 
 
