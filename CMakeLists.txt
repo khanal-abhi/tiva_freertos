@@ -1,13 +1,16 @@
 cmake_minimum_required(VERSION "3.20")
 set(CMAKE_TOOLCHAIN_FILE toolchain.cmake)
 
+# Pull env vars into cmake vars
 set(TIVA_SDK_PATH $ENV{TIVA_SDK_PATH})
 set(OPENOCD_CONFIG_PATH $ENV{OPENOCD_CONFIG_PATH})
-set(OPENOCD_BOARD dk-tm4c129)
-set(LINKERSCRIPT_PATH ${CMAKE_SOURCE_DIR}/linkerscript.ld)
-set(FREERTOS_KERNEL_PATH)
+set(FREERTOS_KERNEL_PATH $ENV{FREERTOS_KERNEL_PATH})
 
 project(tiva_freertos LANGUAGES C)
+
+# Project specific cmake vars
+set(OPENOCD_BOARD dk-tm4c129)
+set(LINKERSCRIPT_PATH ${CMAKE_SOURCE_DIR}/${CMAKE_PROJECT_NAME}.ld)
 
 add_executable(
     ${CMAKE_PROJECT_NAME}
