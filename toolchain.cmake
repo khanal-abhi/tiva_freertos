@@ -14,8 +14,8 @@ set(CMAKE_STRIP                 arm-none-eabi-strip${CMAKE_EXECUTABLE_SUFFIX} CA
 set(CMAKE_C_FLAGS               "-mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_TM4C129ENCPDT -c")
 set(CMAKE_CXX_FLAGS             "${CMAKE_C_FLAGS} -fno-exceptions" CACHE INTERNAL "")
 
-set(CMAKE_C_FLAGS_DEBUG         "-Os -g" CACHE INTERNAL "")
-set(CMAKE_C_FLAGS_RELEASE       "-Os -DNDEBUG" CACHE INTERNAL "")
+set(CMAKE_C_FLAGS_DEBUG         "-g" CACHE INTERNAL "")
+set(CMAKE_C_FLAGS_RELEASE       "-DNDEBUG" CACHE INTERNAL "")
 set(CMAKE_CXX_FLAGS_DEBUG       "${CMAKE_C_FLAGS_DEBUG}" CACHE INTERNAL "")
 set(CMAKE_CXX_FLAGS_RELEASE     "${CMAKE_C_FLAGS_RELEASE}" CACHE INTERNAL "")
 set(CMAKE_EXE_LINKER_FLAGS      "-T ${CMAKE_SOURCE_DIR}/linkerscript.ld")
