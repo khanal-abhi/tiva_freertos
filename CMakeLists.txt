@@ -20,6 +20,7 @@ add_custom_target(
         ${CMAKE_BINARY_DIR}/CMakeFiles/tiva_freertos.dir/startup_gcc.c.obj
         ${CMAKE_BINARY_DIR}/CMakeFiles/tiva_freertos.dir/main.c.obj
         ${TIVA_SDK_ROOT}/driverlib/gcc/libdriver.a
+        -Map=${CMAKE_PROJECT_NAME}.map
         -o ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.elf
 )
 
