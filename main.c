@@ -5,20 +5,20 @@
 //
 // Copyright (c) 2013-2020 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
-// 
+//
 // Texas Instruments (TI) is supplying this software for use solely and
 // exclusively on TI's microcontroller products. The software is owned by
 // TI and/or its suppliers, and is protected under applicable copyright
 // laws. You may not combine this software with "viral" open-source
 // software in order to form a larger program.
-// 
+//
 // THIS SOFTWARE IS PROVIDED "AS IS" AND WITH ALL FAULTS.
 // NO WARRANTIES, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT
 // NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
 // A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. TI SHALL NOT, UNDER ANY
 // CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
 // DAMAGES, FOR ANY REASON WHATSOEVER.
-// 
+//
 // This is part of revision 2.2.0.295 of the EK-TM4C129EXL Firmware Package.
 //
 //*****************************************************************************
@@ -61,8 +61,7 @@ uint32_t g_ui32SysClock;
 //
 //*****************************************************************************
 #ifdef DEBUG
-void
-__error__(char *pcFilename, uint32_t ui32Line)
+void __error__(char *pcFilename, uint32_t ui32Line)
 {
 }
 #endif
@@ -72,8 +71,7 @@ __error__(char *pcFilename, uint32_t ui32Line)
 // The UART interrupt handler.
 //
 //*****************************************************************************
-void
-UARTIntHandler(void)
+void UARTIntHandler(void)
 {
     uint32_t ui32Status;
 
@@ -90,7 +88,7 @@ UARTIntHandler(void)
     //
     // Loop while there are characters in the receive FIFO.
     //
-    while(MAP_UARTCharsAvail(UART0_BASE))
+    while (MAP_UARTCharsAvail(UART0_BASE))
     {
         //
         // Read the next character from the UART and write it back to the UART.
@@ -120,13 +118,12 @@ UARTIntHandler(void)
 // Send a string to the UART.
 //
 //*****************************************************************************
-void
-UARTSend(const uint8_t *pui8Buffer, uint32_t ui32Count)
+void UARTSend(const uint8_t *pui8Buffer, uint32_t ui32Count)
 {
     //
     // Loop while there are more characters to send.
     //
-    while(ui32Count--)
+    while (ui32Count--)
     {
         //
         // Write the next character to the UART.
@@ -140,8 +137,7 @@ UARTSend(const uint8_t *pui8Buffer, uint32_t ui32Count)
 // This example demonstrates how to send a string of data to the UART.
 //
 //*****************************************************************************
-int
-main(void)
+int main(void)
 {
     //
     // Run from the PLL at 120 MHz.
@@ -151,8 +147,9 @@ main(void)
     g_ui32SysClock = MAP_SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ |
                                              SYSCTL_OSC_MAIN |
                                              SYSCTL_USE_PLL |
-                                             SYSCTL_CFG_VCO_240), 120000000);
-                                             
+                                             SYSCTL_CFG_VCO_240),
+                                            120000000);
+
     //
     // Enable the GPIO port that is used for the on-board LED.
     //
@@ -202,7 +199,7 @@ main(void)
     //
     // Loop forever echoing data through the UART.
     //
-    while(1)
+    while (1)
     {
     }
 }
