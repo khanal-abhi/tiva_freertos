@@ -23,9 +23,40 @@
 //
 //*****************************************************************************
 
+/* Kernel includes. */
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+
 #include <stdint.h>
 #include <board.h>
 #include <uart_rtos.h>
+
+#define mainCHECK_TASK_PRIORITY 3
+
+static void vPrintTask(void *pvParameters);
+
+void *memcpy(void *dst, void *src, size_t len)
+{
+    uint8_t *_dst = (uint8_t *)dst;
+    uint8_t *_src = (uint8_t *)src;
+    while (len--)
+    {
+        *(_src++) = *(_dst++);
+    }
+    return NULL;
+}
+
+void *memset(void *dst, int c, size_t len)
+{
+    uint8_t _c = c & 0xff;
+    uint8_t *_dst = (uint8_t *)dst;
+    while (len--)
+    {
+        *(_dst++) = _c;
+    }
+    return NULL;
+}
 
 //*****************************************************************************
 //
@@ -36,10 +67,8 @@ int main(void)
 {
     board_init();
 
-    //
-    // Prompt for text to be entered.
-    //
-    UARTSend((uint8_t *)"\033[2JEnter text: ", 16);
+    xTaskCreate(vPrintTask, "Check", configMINIMAL_STACK_SIZE, NULL, mainCHECK_TASK_PRIORITY, NULL);
+    vTaskStartScheduler();
 
     //
     // Loop forever echoing data through the UART.
@@ -47,4 +76,12 @@ int main(void)
     while (1)
     {
     }
+}
+
+static void vPrintTask(void *pvParameters)
+{
+    //
+    // Prompt for text to be entered.
+    //
+    UARTSend((uint8_t *)"\033[2JEnter text: ", 16);
 }
