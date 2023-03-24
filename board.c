@@ -1,13 +1,23 @@
+//*****************************************************************************
+//
+// board.c - The board configuration logic
+//
+// Author: Abhinash Khanal
+// Created: 03-23-2023
+// Last Updated: 03-02-2023
+//
+//*****************************************************************************
+
 #include <board.h>
-#include <stdbool.h>
 #include <inc/hw_memmap.h>
-#include <driverlib/sysctl.h>
 #include <driverlib/gpio.h>
-#include <driverlib/rom_map.h>
 #include <driverlib/interrupt.h>
 #include <driverlib/pin_map.h>
+#include <driverlib/rom_map.h>
+#include <driverlib/sysctl.h>
 #include <driverlib/uart.h>
 #include <inc/hw_ints.h>
+#include <stdbool.h>
 
 uint32_t g_ui32SysClock;
 

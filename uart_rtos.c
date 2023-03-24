@@ -1,11 +1,21 @@
-#include <uart_rtos.h>
+//*****************************************************************************
+//
+// uart_rtos.c - A freertos based uart driver taht will allow the use of
+// freertos primitives for multithreading support.
+//
+// Author: Abhinash Khanal
+// Created: 03-23-2023
+// Last Updated: 03-02-2023
+//
+//*****************************************************************************
+
 #include <board.h>
-#include <stdbool.h>
 #include <driverlib/gpio.h>
-#include <driverlib/uart.h>
 #include <driverlib/rom_map.h>
 #include <driverlib/sysctl.h>
+#include <driverlib/uart.h>
 #include <inc/hw_memmap.h>
+#include <uart_rtos.h>
 
 extern uint32_t g_ui32SysClock;
 
