@@ -117,30 +117,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named tiva_freertos
+# Target rules for targets named tiva_freertos.elf
 
 # Build rule for target.
-tiva_freertos: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tiva_freertos
-.PHONY : tiva_freertos
+tiva_freertos.elf: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tiva_freertos.elf
+.PHONY : tiva_freertos.elf
 
 # fast build rule for target.
-tiva_freertos/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/build
-.PHONY : tiva_freertos/fast
-
-#=============================================================================
-# Target rules for targets named link_tiva_freertos
-
-# Build rule for target.
-link_tiva_freertos: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 link_tiva_freertos
-.PHONY : link_tiva_freertos
-
-# fast build rule for target.
-link_tiva_freertos/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/link_tiva_freertos.dir/build.make CMakeFiles/link_tiva_freertos.dir/build
-.PHONY : link_tiva_freertos/fast
+tiva_freertos.elf/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/build
+.PHONY : tiva_freertos.elf/fast
 
 #=============================================================================
 # Target rules for targets named flash_tiva_freertos
@@ -186,7 +173,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/croutine.obj: _deps/freertos_kernel-sr
 
 # target to build an object file
 _deps/freertos_kernel-src/FreeRTOS/Source/croutine.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/croutine.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/croutine.c.obj
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/croutine.c.obj
 
 _deps/freertos_kernel-src/FreeRTOS/Source/croutine.i: _deps/freertos_kernel-src/FreeRTOS/Source/croutine.c.i
@@ -194,7 +181,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/croutine.i: _deps/freertos_kernel-src/
 
 # target to preprocess a source file
 _deps/freertos_kernel-src/FreeRTOS/Source/croutine.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/croutine.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/croutine.c.i
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/croutine.c.i
 
 _deps/freertos_kernel-src/FreeRTOS/Source/croutine.s: _deps/freertos_kernel-src/FreeRTOS/Source/croutine.c.s
@@ -202,7 +189,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/croutine.s: _deps/freertos_kernel-src/
 
 # target to generate assembly for a file
 _deps/freertos_kernel-src/FreeRTOS/Source/croutine.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/croutine.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/croutine.c.s
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/croutine.c.s
 
 _deps/freertos_kernel-src/FreeRTOS/Source/event_groups.obj: _deps/freertos_kernel-src/FreeRTOS/Source/event_groups.c.obj
@@ -210,7 +197,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/event_groups.obj: _deps/freertos_kerne
 
 # target to build an object file
 _deps/freertos_kernel-src/FreeRTOS/Source/event_groups.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/event_groups.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/event_groups.c.obj
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/event_groups.c.obj
 
 _deps/freertos_kernel-src/FreeRTOS/Source/event_groups.i: _deps/freertos_kernel-src/FreeRTOS/Source/event_groups.c.i
@@ -218,7 +205,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/event_groups.i: _deps/freertos_kernel-
 
 # target to preprocess a source file
 _deps/freertos_kernel-src/FreeRTOS/Source/event_groups.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/event_groups.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/event_groups.c.i
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/event_groups.c.i
 
 _deps/freertos_kernel-src/FreeRTOS/Source/event_groups.s: _deps/freertos_kernel-src/FreeRTOS/Source/event_groups.c.s
@@ -226,7 +213,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/event_groups.s: _deps/freertos_kernel-
 
 # target to generate assembly for a file
 _deps/freertos_kernel-src/FreeRTOS/Source/event_groups.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/event_groups.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/event_groups.c.s
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/event_groups.c.s
 
 _deps/freertos_kernel-src/FreeRTOS/Source/list.obj: _deps/freertos_kernel-src/FreeRTOS/Source/list.c.obj
@@ -234,7 +221,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/list.obj: _deps/freertos_kernel-src/Fr
 
 # target to build an object file
 _deps/freertos_kernel-src/FreeRTOS/Source/list.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/list.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/list.c.obj
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/list.c.obj
 
 _deps/freertos_kernel-src/FreeRTOS/Source/list.i: _deps/freertos_kernel-src/FreeRTOS/Source/list.c.i
@@ -242,7 +229,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/list.i: _deps/freertos_kernel-src/Free
 
 # target to preprocess a source file
 _deps/freertos_kernel-src/FreeRTOS/Source/list.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/list.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/list.c.i
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/list.c.i
 
 _deps/freertos_kernel-src/FreeRTOS/Source/list.s: _deps/freertos_kernel-src/FreeRTOS/Source/list.c.s
@@ -250,7 +237,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/list.s: _deps/freertos_kernel-src/Free
 
 # target to generate assembly for a file
 _deps/freertos_kernel-src/FreeRTOS/Source/list.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/list.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/list.c.s
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/list.c.s
 
 _deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.obj: _deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
@@ -258,7 +245,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.obj: _deps/
 
 # target to build an object file
 _deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
 
 _deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.i: _deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.i
@@ -266,7 +253,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.i: _deps/fr
 
 # target to preprocess a source file
 _deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.i
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.i
 
 _deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.s: _deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.s
@@ -274,7 +261,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.s: _deps/fr
 
 # target to generate assembly for a file
 _deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.s
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.s
 
 _deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.obj: _deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
@@ -282,7 +269,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.obj: _deps/fre
 
 # target to build an object file
 _deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
 
 _deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.i: _deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.c.i
@@ -290,7 +277,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.i: _deps/freer
 
 # target to preprocess a source file
 _deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.c.i
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.c.i
 
 _deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.s: _deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.c.s
@@ -298,7 +285,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.s: _deps/freer
 
 # target to generate assembly for a file
 _deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.c.s
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.c.s
 
 _deps/freertos_kernel-src/FreeRTOS/Source/queue.obj: _deps/freertos_kernel-src/FreeRTOS/Source/queue.c.obj
@@ -306,7 +293,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/queue.obj: _deps/freertos_kernel-src/F
 
 # target to build an object file
 _deps/freertos_kernel-src/FreeRTOS/Source/queue.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/queue.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/queue.c.obj
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/queue.c.obj
 
 _deps/freertos_kernel-src/FreeRTOS/Source/queue.i: _deps/freertos_kernel-src/FreeRTOS/Source/queue.c.i
@@ -314,7 +301,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/queue.i: _deps/freertos_kernel-src/Fre
 
 # target to preprocess a source file
 _deps/freertos_kernel-src/FreeRTOS/Source/queue.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/queue.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/queue.c.i
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/queue.c.i
 
 _deps/freertos_kernel-src/FreeRTOS/Source/queue.s: _deps/freertos_kernel-src/FreeRTOS/Source/queue.c.s
@@ -322,7 +309,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/queue.s: _deps/freertos_kernel-src/Fre
 
 # target to generate assembly for a file
 _deps/freertos_kernel-src/FreeRTOS/Source/queue.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/queue.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/queue.c.s
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/queue.c.s
 
 _deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.obj: _deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.c.obj
@@ -330,7 +317,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.obj: _deps/freertos_kern
 
 # target to build an object file
 _deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.c.obj
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.c.obj
 
 _deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.i: _deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.c.i
@@ -338,7 +325,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.i: _deps/freertos_kernel
 
 # target to preprocess a source file
 _deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.c.i
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.c.i
 
 _deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.s: _deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.c.s
@@ -346,7 +333,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.s: _deps/freertos_kernel
 
 # target to generate assembly for a file
 _deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.c.s
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.c.s
 
 _deps/freertos_kernel-src/FreeRTOS/Source/tasks.obj: _deps/freertos_kernel-src/FreeRTOS/Source/tasks.c.obj
@@ -354,7 +341,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/tasks.obj: _deps/freertos_kernel-src/F
 
 # target to build an object file
 _deps/freertos_kernel-src/FreeRTOS/Source/tasks.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/tasks.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/tasks.c.obj
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/tasks.c.obj
 
 _deps/freertos_kernel-src/FreeRTOS/Source/tasks.i: _deps/freertos_kernel-src/FreeRTOS/Source/tasks.c.i
@@ -362,7 +349,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/tasks.i: _deps/freertos_kernel-src/Fre
 
 # target to preprocess a source file
 _deps/freertos_kernel-src/FreeRTOS/Source/tasks.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/tasks.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/tasks.c.i
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/tasks.c.i
 
 _deps/freertos_kernel-src/FreeRTOS/Source/tasks.s: _deps/freertos_kernel-src/FreeRTOS/Source/tasks.c.s
@@ -370,7 +357,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/tasks.s: _deps/freertos_kernel-src/Fre
 
 # target to generate assembly for a file
 _deps/freertos_kernel-src/FreeRTOS/Source/tasks.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/tasks.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/tasks.c.s
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/tasks.c.s
 
 _deps/freertos_kernel-src/FreeRTOS/Source/timers.obj: _deps/freertos_kernel-src/FreeRTOS/Source/timers.c.obj
@@ -378,7 +365,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/timers.obj: _deps/freertos_kernel-src/
 
 # target to build an object file
 _deps/freertos_kernel-src/FreeRTOS/Source/timers.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/timers.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/timers.c.obj
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/timers.c.obj
 
 _deps/freertos_kernel-src/FreeRTOS/Source/timers.i: _deps/freertos_kernel-src/FreeRTOS/Source/timers.c.i
@@ -386,7 +373,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/timers.i: _deps/freertos_kernel-src/Fr
 
 # target to preprocess a source file
 _deps/freertos_kernel-src/FreeRTOS/Source/timers.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/timers.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/timers.c.i
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/timers.c.i
 
 _deps/freertos_kernel-src/FreeRTOS/Source/timers.s: _deps/freertos_kernel-src/FreeRTOS/Source/timers.c.s
@@ -394,7 +381,7 @@ _deps/freertos_kernel-src/FreeRTOS/Source/timers.s: _deps/freertos_kernel-src/Fr
 
 # target to generate assembly for a file
 _deps/freertos_kernel-src/FreeRTOS/Source/timers.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/timers.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/_deps/freertos_kernel-src/FreeRTOS/Source/timers.c.s
 .PHONY : _deps/freertos_kernel-src/FreeRTOS/Source/timers.c.s
 
 board.obj: board.c.obj
@@ -402,7 +389,7 @@ board.obj: board.c.obj
 
 # target to build an object file
 board.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/board.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/board.c.obj
 .PHONY : board.c.obj
 
 board.i: board.c.i
@@ -410,7 +397,7 @@ board.i: board.c.i
 
 # target to preprocess a source file
 board.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/board.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/board.c.i
 .PHONY : board.c.i
 
 board.s: board.c.s
@@ -418,15 +405,39 @@ board.s: board.c.s
 
 # target to generate assembly for a file
 board.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/board.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/board.c.s
 .PHONY : board.c.s
+
+freertos.obj: freertos.c.obj
+.PHONY : freertos.obj
+
+# target to build an object file
+freertos.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/freertos.c.obj
+.PHONY : freertos.c.obj
+
+freertos.i: freertos.c.i
+.PHONY : freertos.i
+
+# target to preprocess a source file
+freertos.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/freertos.c.i
+.PHONY : freertos.c.i
+
+freertos.s: freertos.c.s
+.PHONY : freertos.s
+
+# target to generate assembly for a file
+freertos.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/freertos.c.s
+.PHONY : freertos.c.s
 
 main.obj: main.c.obj
 .PHONY : main.obj
 
 # target to build an object file
 main.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/main.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/main.c.obj
 .PHONY : main.c.obj
 
 main.i: main.c.i
@@ -434,7 +445,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/main.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -442,7 +453,7 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/main.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/main.c.s
 .PHONY : main.c.s
 
 startup_gcc.obj: startup_gcc.c.obj
@@ -450,7 +461,7 @@ startup_gcc.obj: startup_gcc.c.obj
 
 # target to build an object file
 startup_gcc.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/startup_gcc.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/startup_gcc.c.obj
 .PHONY : startup_gcc.c.obj
 
 startup_gcc.i: startup_gcc.c.i
@@ -458,7 +469,7 @@ startup_gcc.i: startup_gcc.c.i
 
 # target to preprocess a source file
 startup_gcc.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/startup_gcc.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/startup_gcc.c.i
 .PHONY : startup_gcc.c.i
 
 startup_gcc.s: startup_gcc.c.s
@@ -466,7 +477,7 @@ startup_gcc.s: startup_gcc.c.s
 
 # target to generate assembly for a file
 startup_gcc.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/startup_gcc.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/startup_gcc.c.s
 .PHONY : startup_gcc.c.s
 
 uart_rtos.obj: uart_rtos.c.obj
@@ -474,7 +485,7 @@ uart_rtos.obj: uart_rtos.c.obj
 
 # target to build an object file
 uart_rtos.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/uart_rtos.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/uart_rtos.c.obj
 .PHONY : uart_rtos.c.obj
 
 uart_rtos.i: uart_rtos.c.i
@@ -482,7 +493,7 @@ uart_rtos.i: uart_rtos.c.i
 
 # target to preprocess a source file
 uart_rtos.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/uart_rtos.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/uart_rtos.c.i
 .PHONY : uart_rtos.c.i
 
 uart_rtos.s: uart_rtos.c.s
@@ -490,7 +501,7 @@ uart_rtos.s: uart_rtos.c.s
 
 # target to generate assembly for a file
 uart_rtos.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.dir/build.make CMakeFiles/tiva_freertos.dir/uart_rtos.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiva_freertos.elf.dir/build.make CMakeFiles/tiva_freertos.elf.dir/uart_rtos.c.s
 .PHONY : uart_rtos.c.s
 
 # Help Target
@@ -503,9 +514,8 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... attach_to_gdb_server"
 	@echo "... flash_tiva_freertos"
-	@echo "... link_tiva_freertos"
 	@echo "... start_gdb_server"
-	@echo "... tiva_freertos"
+	@echo "... tiva_freertos.elf"
 	@echo "... _deps/freertos_kernel-src/FreeRTOS/Source/croutine.obj"
 	@echo "... _deps/freertos_kernel-src/FreeRTOS/Source/croutine.i"
 	@echo "... _deps/freertos_kernel-src/FreeRTOS/Source/croutine.s"
@@ -536,6 +546,9 @@ help:
 	@echo "... board.obj"
 	@echo "... board.i"
 	@echo "... board.s"
+	@echo "... freertos.obj"
+	@echo "... freertos.i"
+	@echo "... freertos.s"
 	@echo "... main.obj"
 	@echo "... main.i"
 	@echo "... main.s"

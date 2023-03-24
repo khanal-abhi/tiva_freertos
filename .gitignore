@@ -1,3 +1,4 @@
 .vscode
 build
 .envsetup.sh
+*.old

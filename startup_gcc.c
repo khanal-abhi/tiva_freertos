@@ -22,9 +22,9 @@
 //
 //*****************************************************************************
 
-#include <stdint.h>
 #include <inc/hw_nvic.h>
 #include <inc/hw_types.h>
+#include <stdint.h>
 
 //*****************************************************************************
 //
@@ -209,8 +209,8 @@ __attribute__((section(".isr_vector"))) void (*const g_pfnVectors[])(void) =
 extern uint32_t _ldata;
 extern uint32_t _data;
 extern uint32_t _edata;
-extern uint32_t _bss;
-extern uint32_t _ebss;
+extern uint32_t __bss_start__;
+extern uint32_t __bss_end__;
 
 //*****************************************************************************
 //
@@ -238,8 +238,8 @@ void ResetISR(void)
     //
     // Zero fill the bss segment.
     //
-    __asm("    ldr     r0, =_bss\n"
-          "    ldr     r1, =_ebss\n"
+    __asm("    ldr     r0, =__bss_start__\n"
+          "    ldr     r1, =__bss_end__\n"
           "    mov     r2, #0\n"
           "    .thumb_func\n"
           "zero_loop:\n"

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION "3.20")
-set(CMAKE_TOOLCHAIN_FILE toolchain.cmake)
+add_compile_definitions(gcc)
 
 include(FetchContent)
 
@@ -19,29 +19,38 @@ project(tiva_freertos LANGUAGES C)
 
 set(OPENOCD_BOARD dk-tm4c129)
 set(LINKERSCRIPT_PATH ${CMAKE_SOURCE_DIR}/${CMAKE_PROJECT_NAME}.ld)
+set(FREERTOS_SRC  ${CMAKE_BINARY_DIR}/_deps/freertos_kernel-src)
+set(CMAKE_TOOLCHAIN_FILE toolchain.cmake)
+
 
 add_executable(
-    ${CMAKE_PROJECT_NAME}
+    ${CMAKE_PROJECT_NAME}.elf
     startup_gcc.c
     board.c
     main.c
     uart_rtos.c
-    ${CMAKE_BINARY_DIR}/_deps/freertos_kernel-src/FreeRTOS/Source/croutine.c
-    ${CMAKE_BINARY_DIR}/_deps/freertos_kernel-src/FreeRTOS/Source/queue.c
-    ${CMAKE_BINARY_DIR}/_deps/freertos_kernel-src/FreeRTOS/Source/event_groups.c
-    ${CMAKE_BINARY_DIR}/_deps/freertos_kernel-src/FreeRTOS/Source/list.c
-    ${CMAKE_BINARY_DIR}/_deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.c
-    ${CMAKE_BINARY_DIR}/_deps/freertos_kernel-src/FreeRTOS/Source/tasks.c
-    ${CMAKE_BINARY_DIR}/_deps/freertos_kernel-src/FreeRTOS/Source/timers.c
-    ${CMAKE_BINARY_DIR}/_deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c
-    ${CMAKE_BINARY_DIR}/_deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.c
+    freertos.c
+    ${FREERTOS_SRC}/FreeRTOS/Source/croutine.c
+    ${FREERTOS_SRC}/FreeRTOS/Source/queue.c
+    ${FREERTOS_SRC}/FreeRTOS/Source/event_groups.c
+    ${FREERTOS_SRC}/FreeRTOS/Source/list.c
+    ${FREERTOS_SRC}/FreeRTOS/Source/stream_buffer.c
+    ${FREERTOS_SRC}/FreeRTOS/Source/tasks.c
+    ${FREERTOS_SRC}/FreeRTOS/Source/timers.c
+    ${FREERTOS_SRC}/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c
+    ${FREERTOS_SRC}/FreeRTOS/Source/portable/MemMang/heap_4.c
+)
+
+target_link_libraries(
+    ${CMAKE_PROJECT_NAME}.elf
+    ${TIVA_SDK_PATH}/driverlib/gcc/libdriver.a
 )
 
 include_directories(
     ${TIVA_SDK_PATH}/
     include
-    ${CMAKE_BINARY_DIR}/_deps/freertos_kernel-src/FreeRTOS/Source/include
-    ${CMAKE_BINARY_DIR}/_deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F
+    ${FREERTOS_SRC}/FreeRTOS/Source/include
+    ${FREERTOS_SRC}/FreeRTOS/Source/portable/GCC/ARM_CM4F
 )
 
 FetchContent_Declare( freertos_kernel
@@ -65,27 +74,6 @@ if (CMAKE_CROSSCOMPILING)
 endif()
 
 FetchContent_MakeAvailable(freertos_kernel)
-
-add_custom_target(
-    link_tiva_freertos
-    COMMAND ${CMAKE_LINKER} -T ${LINKERSCRIPT_PATH}
-        ${CMAKE_BINARY_DIR}/CMakeFiles/tiva_freertos.dir/startup_gcc.c.obj
-        ${CMAKE_BINARY_DIR}/CMakeFiles/tiva_freertos.dir/board.c.obj
-        ${CMAKE_BINARY_DIR}/CMakeFiles/tiva_freertos.dir/uart_rtos.c.obj
-        ${CMAKE_BINARY_DIR}/CMakeFiles/tiva_freertos.dir/main.c.obj
-        ${TIVA_SDK_PATH}/driverlib/gcc/libdriver.a
-        ${CMAKE_BINARY_DIR}/CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/croutine.c.obj
-        ${CMAKE_BINARY_DIR}/CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/queue.c.obj
-        ${CMAKE_BINARY_DIR}/CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/event_groups.c.obj
-        ${CMAKE_BINARY_DIR}/CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/list.c.obj
-        ${CMAKE_BINARY_DIR}/CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/stream_buffer.c.obj
-        ${CMAKE_BINARY_DIR}/CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/tasks.c.obj
-        ${CMAKE_BINARY_DIR}/CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/timers.c.obj
-        ${CMAKE_BINARY_DIR}/CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
-        ${CMAKE_BINARY_DIR}/CMakeFiles/tiva_freertos.dir/_deps/freertos_kernel-src/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
-        -Map=${CMAKE_PROJECT_NAME}.map
-        -o ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.elf
-)
 
 add_custom_target(
     flash_tiva_freertos

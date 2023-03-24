@@ -50,9 +50,9 @@ SECTIONS
 
     .bss :
     {
-        _bss = .;
+        __bss_start__ = .;
         *(.bss*)
         *(COMMON)
-        _ebss = .;
+        __bss_end__ = .;
     } > SRAM
 }
