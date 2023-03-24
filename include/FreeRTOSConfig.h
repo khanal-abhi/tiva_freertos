@@ -70,5 +70,4 @@ to exclude the API function. */
 #define INCLUDE_vTaskDelay				        1
 #define INCLUDE_xTaskGetCurrentTaskHandle       1
 
-
 #endif /* FREERTOS_CONFIG_H */

@@ -84,4 +84,9 @@ static void vPrintTask(void *pvParameters)
     // Prompt for text to be entered.
     //
     UARTSend((uint8_t *)"\033[2JEnter text: ", 16);
+    for (;;)
+    {
+        UARTSend((uint8_t *)"Hello, world!\n\r", 16);
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
+    }
 }
