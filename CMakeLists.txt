@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION "3.20")
+set(CMAKE_TOOLCHAIN_FILE toolchain.cmake)
 add_compile_definitions(gcc)
 
 include(FetchContent)
@@ -20,7 +21,6 @@ project(tiva_freertos LANGUAGES C)
 set(OPENOCD_BOARD dk-tm4c129)
 set(LINKERSCRIPT_PATH ${CMAKE_SOURCE_DIR}/${CMAKE_PROJECT_NAME}.ld)
 set(FREERTOS_SRC  ${CMAKE_BINARY_DIR}/_deps/freertos_kernel-src)
-set(CMAKE_TOOLCHAIN_FILE toolchain.cmake)
 
 
 add_executable(

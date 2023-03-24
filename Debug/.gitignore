@@ -4,3 +4,4 @@ CMakeFiles
 *.txt
 *.elf
 *.map
+Makefile
