@@ -3,6 +3,7 @@ set(CMAKE_TOOLCHAIN_FILE toolchain.cmake)
 add_compile_definitions(gcc)
 
 include(FetchContent)
+set(PROJECT_BINARY_NAME ${CMAKE_PROJECT_NAME}.elf)
 
 set(TIVA_SDK_PATH $ENV{TIVA_SDK_PATH})
 
@@ -21,15 +22,17 @@ project(tiva_freertos LANGUAGES C)
 set(OPENOCD_BOARD dk-tm4c129)
 set(LINKERSCRIPT_PATH ${CMAKE_SOURCE_DIR}/${CMAKE_PROJECT_NAME}.ld)
 set(FREERTOS_SRC  ${CMAKE_BINARY_DIR}/_deps/freertos_kernel-src)
+set(DRIVERS_PATH ${CMAKE_SOURCE_DIR}/drivers)
 
 
 add_executable(
-    ${CMAKE_PROJECT_NAME}.elf
+    ${PROJECT_BINARY_NAME}
     startup_gcc.c
     board.c
     main.c
     uart_rtos.c
     freertos.c
+    ${DRIVERS_PATH}/gc9a01a/gc9a01a.c
     ${FREERTOS_SRC}/FreeRTOS/Source/croutine.c
     ${FREERTOS_SRC}/FreeRTOS/Source/queue.c
     ${FREERTOS_SRC}/FreeRTOS/Source/event_groups.c
@@ -42,7 +45,7 @@ add_executable(
 )
 
 target_link_libraries(
-    ${CMAKE_PROJECT_NAME}.elf
+    ${PROJECT_BINARY_NAME}
     ${TIVA_SDK_PATH}/driverlib/gcc/libdriver.a
 )
 
@@ -51,6 +54,7 @@ include_directories(
     include
     ${FREERTOS_SRC}/FreeRTOS/Source/include
     ${FREERTOS_SRC}/FreeRTOS/Source/portable/GCC/ARM_CM4F
+    ${DRIVERS_PATH}/gc9a01a/include
 )
 
 FetchContent_Declare( freertos_kernel
@@ -88,5 +92,5 @@ add_custom_target(
 
 add_custom_target(
     attach_to_gdb_server
-    COMMAND arm-none-eabi-gdb ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.elf
+    COMMAND arm-none-eabi-gdb ${CMAKE_BINARY_DIR}/${PROJECT_BINARY_NAME}
 )

@@ -16,6 +16,7 @@
 #include <driverlib/rom_map.h>
 #include <driverlib/sysctl.h>
 #include <driverlib/uart.h>
+#include <driverlib/watchdog.h>
 #include <inc/hw_ints.h>
 #include <stdbool.h>
 
@@ -31,6 +32,8 @@ void __error__(char *pcFilename, uint32_t ui32Line)
 {
 }
 #endif
+
+void WDOG0ISRHandler(void);
 
 void board_init()
 {
@@ -86,4 +89,15 @@ void board_init()
     //
     MAP_IntEnable(INT_UART0);
     MAP_UARTIntEnable(UART0_BASE, UART_INT_RX | UART_INT_RT);
+
+    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_WDOG0);
+    MAP_IntEnable(INT_WATCHDOG);
+    MAP_WatchdogReloadSet(WATCHDOG0_BASE, g_ui32SysClock);
+    MAP_WatchdogResetEnable(WATCHDOG0_BASE);
+    MAP_WatchdogEnable(WATCHDOG0_BASE);
+}
+
+void vApplicationIdleHook()
+{
+    MAP_WatchdogReloadSet(WATCHDOG0_BASE, g_ui32SysClock);
 }
